@@ -47,3 +47,9 @@
     dark:bg-dark-onBackground/15;
   }
 }
+
+@layer components {
+  .text-field-wrapper {
+    @apply relative;
+  }
+}
