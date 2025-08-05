@@ -202,9 +202,12 @@
     duration-short3
     ease-standard
 
-    hover:text-light-primary
-    hover:dark:text-dark-primary;
-    hover:underline;
+        hover:text-light-primary
+        hover:dark:text-dark-primary;
+    }
+    
+    .link:hover {
+      @apply underline;
   }
 }
 
