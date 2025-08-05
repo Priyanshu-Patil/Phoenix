@@ -64,36 +64,40 @@ const Register = () => {
               <TextField
                 type='password'
                 name='password'
-                label='password'
+                label='Password'
                 placeholder='Enter your password'
                 required={true}
               />
 
-              <Button type='submit'>Create Account</Button>
+              <Button
+                type='submit'
+              >
+                Create Account
+              </Button>
             </Form>
 
-            <p className=''>
+            <p className='text-bodyMedium text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-center mt-4'>
               Already have an account?
               <Link
                 to='/login'
-                className=''
+                className='link inline-block ms-1 text-light-onSurface dark:text-dark-onSurface'
               >
                 Sign In
               </Link>
             </p>
           </div>
 
-          <p className=''>&copy; 2025 Priyanshu Patil. All rights reserved.</p>
+          <p className='mt-auto mx-auto text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-bodyMedium lg:mx-0'>&copy; 2025 Priyanshu Patil. All rights reserved.</p>
         </div>
 
-        <div className=''>
+        <div className='hidden img-box lg:block lg:relative lg:rounded-large lg:overflow-hidden'>
           <img
             src={banner}
             alt='banner'
             className='img-cover'
           />
 
-          <p className=''>Chat with Phoenix to supercharge your ideas.</p>
+          <p className='absolute bottom-10 left-12 right-12 z-10 text-displayLarge font-semibold leading-tight text-right text-light-onSurface drop-shadow-sm 2xl:text-[72px]'>Chat with Phoenix to supercharge your ideas.</p>
         </div>
       </div>
     </>
