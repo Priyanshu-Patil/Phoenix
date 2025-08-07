@@ -20,7 +20,7 @@ Button.propTypes = {
     classes: PropTypes.string,
     variant: PropTypes.string,
     color: PropTypes.string,
-    childer: PropTypes.any,
+    children: PropTypes.any,
 }
 
 export default Button;

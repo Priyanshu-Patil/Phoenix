@@ -1,10 +1,15 @@
 import PageTitle from '../components/Pagetitle';
-import { Link, Form } from 'react-router-dom';
+import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
+import { circularProgress } from '../components/progress';
 
 const Register = () => {
+  const error = useActionData()
+  const navigation  = useNavigation();
+  console.log(navigation.state)
+
   return (
     <>
       <PageTitle title='Create an account' />
@@ -12,7 +17,7 @@ const Register = () => {
         <div className='flex flex-col p-4'>
           <Link
             to='/'
-            className='max-w-max mx-auto lg:mx-0'
+            className='max-w-max mb-auto mx-auto lg:mx-0'
           >
             <img
               src={logoLight}
@@ -43,6 +48,7 @@ const Register = () => {
             <Form
               method='POST'
               className='grid grid-cols-1 gap-4'
+              action='/register'
             >
               <TextField
                 type='text'
@@ -71,8 +77,9 @@ const Register = () => {
 
               <Button
                 type='submit'
+                disabled = {navigation.state === 'submitting'}
               >
-                Create Account
+                {navigation.state === <circularProgress size='small' /> ? 'Submitting...' : 'Create account'}
               </Button>
             </Form>
 
