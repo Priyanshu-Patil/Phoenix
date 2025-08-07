@@ -21,6 +21,7 @@ const TextField = ({
       <input
         className={`text-field ${fieldclasses}`}
         id={name}
+        name={name}
         placeholder={placeholder}
         {...rest}
       />
