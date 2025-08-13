@@ -3,16 +3,29 @@ import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
-import { circularProgress } from '../components/progress';
+import { CircularProgress, LinearProgress } from '../components/progress';
+import { useEffect } from 'react';
+import { useSnackbar } from '../hooks/useSnackbar';
+import { AnimatePresence } from 'motion/react';
 
 const Register = () => {
-  const error = useActionData()
-  const navigation  = useNavigation();
-  console.log(navigation.state)
+  const error = useActionData();
+  const navigation = useNavigation();
+  const { showSnackbar } = useSnackbar();
+  useEffect(() => {
+    if (error?.message) {
+      showSnackbar({
+        message: error.message,
+        type: 'error',
+        timeOut: 500000000,
+      });
+    }
+  }, [error, showSnackbar]);
 
   return (
     <>
       <PageTitle title='Create an account' />
+
       <div className='relative w-screen h-dvh p-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] lg:gap-2'>
         <div className='flex flex-col p-4'>
           <Link
@@ -77,9 +90,11 @@ const Register = () => {
 
               <Button
                 type='submit'
-                disabled = {navigation.state === 'submitting'}
+                disabled={navigation.state === 'submitting'}
               >
-                {navigation.state === <circularProgress size='small' /> ? 'Submitting...' : 'Create account'}
+                {navigation.state === <CircularProgress size='small' />
+                  ? 'Submitting...'
+                  : 'Create account'}
               </Button>
             </Form>
 
@@ -94,7 +109,9 @@ const Register = () => {
             </p>
           </div>
 
-          <p className='mt-auto mx-auto text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-bodyMedium lg:mx-0'>&copy; 2025 Priyanshu Patil. All rights reserved.</p>
+          <p className='mt-auto mx-auto text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant text-bodyMedium lg:mx-0'>
+            &copy; 2025 Priyanshu Patil. All rights reserved.
+          </p>
         </div>
 
         <div className='hidden img-box lg:block lg:relative lg:rounded-large lg:overflow-hidden'>
@@ -104,9 +121,17 @@ const Register = () => {
             className='img-cover'
           />
 
-          <p className='absolute bottom-10 left-12 right-12 z-10 text-displayLarge font-semibold leading-tight text-right text-light-onSurface drop-shadow-sm 2xl:text-[72px]'>Chat with Phoenix to supercharge your ideas.</p>
+          <p className='absolute bottom-10 left-12 right-12 z-10 text-displayLarge font-semibold leading-tight text-right text-light-onSurface drop-shadow-sm 2xl:text-[72px]'>
+            Chat with Phoenix to supercharge your ideas.
+          </p>
         </div>
       </div>
+
+      <AnimatePresence>
+        {navigation.state === 'loading' && (
+          <LinearProgress classes='absolute top-0 left-0 right-0' />
+        )}
+      </AnimatePresence>
     </>
   );
 };
