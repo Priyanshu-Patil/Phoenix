@@ -2,7 +2,7 @@ import PageTitle from '../components/Pagetitle';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import { CircularProgress, LinearProgress } from '../components/progress';
 import { useEffect } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
@@ -54,7 +54,8 @@ const ResetPassword = () => {
             </h2>
 
             <p className='text-bodyLarge text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant mt-1 mb-5 text-center px-2'>
-              Please choose a password that hasn&apos;t been used before. Must be atleast 8 characters.
+              Please choose a password that hasn&apos;t been used before. Must
+              be atleast 8 characters.
             </p>
 
             <Form

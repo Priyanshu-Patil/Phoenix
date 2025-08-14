@@ -1,4 +1,5 @@
 import PageTitle from './components/Pagetitle';
+import TopAppBar from './components/TopAppBar';
 
 const App = () => {
   return (
@@ -6,11 +7,16 @@ const App = () => {
       <PageTitle title='Phoenix - chat to supercharge your ideas.' />
 
       <div className=''>
+        {/* sidebar */}
         <div className=''>
+          {/* TopAppBar */}
+          <TopAppBar />
+          {/* MainContent */}
           <div className=''>
             <div className=''></div>
           </div>
 
+          {/* Propmt Field */}
           <div className=''>
             <p className=''>
               Phoenix may display inaccurate info, including people, so,
