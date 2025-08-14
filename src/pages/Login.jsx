@@ -2,7 +2,7 @@ import PageTitle from '../components/Pagetitle';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import { CircularProgress, LinearProgress } from '../components/progress';
 import { useEffect } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
@@ -79,9 +79,12 @@ const Login = () => {
                 required={true}
               />
 
-              <div className="text-right">
-                <Link to='/reset-link' className='link text-labelLarge inline-block'>
-                    Forgot Password?
+              <div className='text-right'>
+                <Link
+                  to='/reset-link'
+                  className='link text-labelLarge inline-block'
+                >
+                  Forgot Password?
                 </Link>
               </div>
 

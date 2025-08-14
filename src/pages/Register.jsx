@@ -2,7 +2,7 @@ import PageTitle from '../components/Pagetitle';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import { CircularProgress, LinearProgress } from '../components/progress';
 import { useEffect } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';

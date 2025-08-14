@@ -2,14 +2,13 @@ import PageTitle from '../components/Pagetitle';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { logoLight, logoDark, banner } from '../assets/assets';
 import TextField from '../components/TextField';
-import Button from '../components/Button';
+import { Button } from '../components/Button';
 import { CircularProgress, LinearProgress } from '../components/progress';
 import { useEffect } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
 import { AnimatePresence } from 'motion/react';
 
 const ResetLink = () => {
-
   const actionData = useActionData();
   const navigation = useNavigation();
   const { showSnackbar } = useSnackbar();
@@ -18,7 +17,7 @@ const ResetLink = () => {
     if (actionData) {
       showSnackbar({
         message: actionData.message,
-        type: actionData.ok? 'info' : 'error',
+        type: actionData.ok ? 'info' : 'error',
         timeOut: 8000,
       });
     }
@@ -56,7 +55,8 @@ const ResetLink = () => {
             </h2>
 
             <p className='text-bodyLarge text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant mt-1 mb-5 text-center px-2'>
-              Enter your email and we&apos;ll send you a link to reset your password.
+              Enter your email and we&apos;ll send you a link to reset your
+              password.
             </p>
 
             <Form
