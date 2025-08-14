@@ -12,19 +12,19 @@ const registerAction = async ({ request }) => {
       formData.get('password'),
       formData.get('name'),
     );
-    console.log("User created:", user);
+    console.log('User created:', user);
 
     await account.createEmailPasswordSession(
       formData.get('email'),
-      formData.get('password')
+      formData.get('password'),
     );
 
     return redirect('/');
   } catch (error) {
-    console.log("Appwrite error:", error);
+    console.log('Appwrite error:', error);
     if (error.code === 429) {
       return {
-        message: "Too many requests. Please wait a moment and try again.",
+        message: 'Too many requests. Please wait a moment and try again.',
       };
     }
     return {
