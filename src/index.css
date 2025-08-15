@@ -278,6 +278,36 @@
     @apply bg-light-errorContainer
     text-light-onErrorContainer
   }
+
+  .icon-btn {
+    --state-layer-bg: theme('colors.light.onSurfaceVariant');
+    @apply text-light-onSurfaceVariant
+    dark:text-dark-onSurfaceVariant
+    grid
+    place-items-center
+    w-10
+    h-10
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .icon-btn {
+      --state-layer-bg: theme('colors.dark.onSurfaceVariant');
+    }
+  }
+
+  .icon-btn:disabled {
+    @apply text-light-onSurfaceVariant/[0.38]
+    dark:text-dark-onSurfaceVariant/[0.38]
+    cursor-not-allowed;
+  }
+
+  .icon-btn.small {
+
+  }
+
+  .icon-btn.large {
+    
+  }
 }
 
 @layer utilities {
