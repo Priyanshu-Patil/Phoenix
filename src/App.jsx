@@ -1,5 +1,6 @@
 import PageTitle from './components/Pagetitle';
 import TopAppBar from './components/TopAppBar';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
 
       <div className=''>
         {/* sidebar */}
+        <Sidebar />
         <div className=''>
           {/* TopAppBar */}
           <TopAppBar />
