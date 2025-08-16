@@ -18,9 +18,9 @@ const TopAppBar = () => {
         <IconBtn
           icon='menu'
           title='Menu'
-          size='small'
+          classes='lg:hidden'
         />
-        <Link to='/'>
+        <Link to='/' className='min-w-max max-w-max h-[24px] lg:hidden'>
           <img
             src={logoLight}
             alt='phoenix logo'
