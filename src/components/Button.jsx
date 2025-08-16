@@ -33,7 +33,7 @@ const IconBtn = ({ classes = '', icon, size = '', children, ...rest }) => {
     >
       {children}
       {!children && (
-        <span className={`material-symbols-outlined icon-${size}`}>{icon}</span>
+        <span className='material-symbols-outlined icon'>{icon}</span>
       )}
       <div className='slate-layer'></div>
     </button>
