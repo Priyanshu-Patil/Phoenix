@@ -8,8 +8,9 @@ import { AnimatePresence } from 'motion/react';
 import { useToggle } from '../hooks/useToggle';
 import logout from '../utils/logout';
 import Logo from './Logo';
+import PropTypes from 'prop-types';
 
-const TopAppBar = () => {
+const TopAppBar = ({toggleSidebar }) => {
   const navigation = useNavigation();
   const navigate = useNavigate();
   const { user } = useLoaderData();
@@ -24,6 +25,7 @@ const TopAppBar = () => {
           icon='menu'
           title='Menu'
           classes='lg:hidden'
+          onClick={toggleSidebar}
         />
 
         <Logo classes='lg:hidden'/>
@@ -42,6 +44,10 @@ const TopAppBar = () => {
       <AnimatePresence>{isNormalLoad && <LinearProgress />}</AnimatePresence>
     </header>
   );
+};
+
+TopAppBar.propTypes = {
+  toggleSidebar: PropTypes.func,
 };
 
 export default TopAppBar;
