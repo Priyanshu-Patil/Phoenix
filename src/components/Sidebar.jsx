@@ -2,11 +2,17 @@ import PropTypes from 'prop-types';
 import Logo from './Logo';
 import { ExtendedFab, IconBtn } from './Button';
 import { NavLink } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   return (
     <>
-      <div className={`sidebar ${isSidebarOpen ? 'active' : ''}`}>
+      <motion.div
+        initial= {{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{ duration: 0.3, ease: 'easeOut', delay: 0.2 }}
+        className={`sidebar ${isSidebarOpen ? 'active' : ''}`}
+      >
         <div className='sidebar-inner'>
           <div className='h-16 grid items-center px-4 mb-4'>
             <Logo />
@@ -47,14 +53,19 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
             </nav>
           </div>
 
-          <div className='mt-4 h-14 px-4 grid items-center text-labelLarge text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant border-t boder-light-onSurfaceContainerHigh
-          dark:border-dark-onSurfaceContainerHigh truncate'>
+          <div
+            className='mt-4 h-14 px-4 grid items-center text-labelLarge text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant border-t boder-light-onSurfaceContainerHigh
+          dark:border-dark-onSurfaceContainerHigh truncate'
+          >
             &copy; 2025 Priyanshu Patil
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className={`overlay ${isSidebarOpen ? 'active' : ''}`} onClick={toggleSidebar} ></div>
+      <div
+        className={`overlay ${isSidebarOpen ? 'active' : ''}`}
+        onClick={toggleSidebar}
+      ></div>
     </>
   );
 };

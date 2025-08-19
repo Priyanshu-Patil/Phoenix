@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 const Button = ({
   classes = '',
@@ -9,13 +10,13 @@ const Button = ({
   ...rest
 }) => {
   return (
-    <button
+    <motion.button
       className={`btn ${variant} ${color} ${classes}`}
       {...rest}
     >
       {children}
       <div className='state-layer'></div>
-    </button>
+    </motion.button>
   );
 };
 
