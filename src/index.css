@@ -285,8 +285,9 @@
     --state-layer-bg: theme('colors.light.onSurfaceVariant');
     @apply text-light-onSurfaceVariant
     dark:text-dark-onSurfaceVariant
-    grid
-    place-items-center
+    flex
+    items-center
+    justify-center
     w-10
     h-10
     rounded-full
@@ -534,7 +535,7 @@
     items-end
     flex-wrap
     p-2
-    cursor-text
+    cursor-text;
   }
 
   @media (prefers-color-scheme: dark) {

@@ -18,7 +18,7 @@ const PromptField = () => {
     }
     setplaceholderShown(!inputField.current.innerText);
     setIsMultiline(inputField.current.clientHeight > 64);
-    setInputField(inputField.current.innerText.trim());
+    setinputValue(inputField.current.innerText.trim());
   }, []);
 
   const moveCursorToEnd = useCallback(() => {
@@ -109,7 +109,7 @@ const PromptField = () => {
         onInput={handleInputChange}
         onPaste={handlePaste}
         onKeyDown={(e) => {
-          if ((e.key === 'Enter' && !e, shiftKey)) {
+          if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleSubmit();
           }
