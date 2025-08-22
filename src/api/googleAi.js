@@ -16,4 +16,19 @@ const getConversationTitle = async (userPrompt) => {
   }
 };
 
-export { getConversationTitle };
+const getAiResponse = async(userPrompt, chats = []) => {
+  try {
+    const historyText = chats.map((c, i) => `User: ${c.user}\nAI: ${c.ai}`).join('\n');
+    const prompt = historyText ? `${historyText}\nUser: ${userPrompt}` : userPrompt;
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      generationConfig: { temperature: 1.5 }
+    });
+    return response.text;
+  } catch (error) {
+    console.log(`Error generating AI response ${error.message}`)
+  }
+}
+
+export { getConversationTitle, getAiResponse };
