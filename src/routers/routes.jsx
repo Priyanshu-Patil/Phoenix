@@ -14,6 +14,8 @@ import resetPasswordAction from "./Actions/resetPasswordAction";
 import resetPasswordLoader from "./loaders/resetPasswordLoader";
 import appLoader from "./loaders/appLoader";
 import appAction from "./Actions/appAction";
+import Conversation from "../pages/Conversation";
+import conversationLoader from "./loaders/conversationLoader";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +23,13 @@ const router = createBrowserRouter([
         element: <App />,
         loader: appLoader,
         action: appAction,
+        children: [
+            {
+                path: '/:conversationId',
+                element: <Conversation />,
+                loader: conversationLoader,
+            },
+        ]
     },
     {
         path: '/register',

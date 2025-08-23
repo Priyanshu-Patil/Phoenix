@@ -1,15 +1,19 @@
 import PropTypes from 'prop-types';
 import Logo from './Logo';
 import { ExtendedFab, IconBtn } from './Button';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLoaderData } from 'react-router-dom';
 import { motion } from 'motion/react';
 
 const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
+  const {
+    conversation: { documents: conversationData },
+  } = useLoaderData() || {};
+
   return (
     <>
       <motion.div
-        initial= {{opacity: 0}}
-        animate={{opacity: 1}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.3, ease: 'easeOut', delay: 0.2 }}
         className={`sidebar ${isSidebarOpen ? 'active' : ''}`}
       >
@@ -21,7 +25,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
           <ExtendedFab
             href='/'
             text='New Chat'
-            classes=''
+            classes='mb-4'
             onClick={toggleSidebar}
           />
 
@@ -29,27 +33,32 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
             <p className='text-titleSmall h-9 grid items-center px-4'>Recent</p>
 
             <nav>
-              <div className='relative group'>
-                <NavLink
-                  to='/'
-                  className='nav-link'
-                  title=''
-                  onClick={toggleSidebar}
+              {conversationData.map((item) => (
+                <div
+                  key={item.$id}
+                  className='relative group'
                 >
-                  <span className='material-symbols-outlined icon-small'>
-                    chat_bubble
-                  </span>
-                  <span className='truncate'>New Conversation</span>
-                  <div className='state-layer'></div>
-                </NavLink>
+                  <NavLink
+                    to={item.$id}
+                    className='nav-link'
+                    title={item.title}
+                    onClick={toggleSidebar}
+                  >
+                    <span className='material-symbols-outlined icon-small'>
+                      chat_bubble
+                    </span>
+                    <span className='truncate'>{item.title}</span>
+                    <div className='state-layer'></div>
+                  </NavLink>
 
-                <IconBtn
-                  icon='delete'
-                  size='small'
-                  title='Delete'
-                  classes='absolute top-1/2 right-1.5 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hidden lg:grid'
-                />
-              </div>
+                  <IconBtn
+                    icon='delete'
+                    size='small'
+                    title='Delete'
+                    classes='absolute top-1/2 right-1.5 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hidden lg:grid'
+                  />
+                </div>
+              ))}
             </nav>
           </div>
 

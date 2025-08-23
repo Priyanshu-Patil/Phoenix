@@ -565,6 +565,78 @@
     after:-translate-y-1/2
     after:pointer-events-none
   }
+
+  .markdown-content {
+    @apply text-light-onSurface
+    dark:text-dark-onSurface
+    leading-7
+    pt-1;
+  }
+
+  .markdown-content > :first-child {
+    @apply !mt-0;
+  }
+
+  .markdown-content :where(h1, h2, h3, h4, h5 ,h6) {
+    @apply text-titleMedium
+    font-semibold
+    mt-8
+    mb-4;
+  }
+
+  .markdown-content :where(p, pre, table) {
+    @apply my-4;
+  }
+
+  .markdown-content :where(strong, span, a) {
+    @apply inline;
+  }
+
+  .markdown-content :where(ul, ol) {
+    list-style: revert;
+    @apply my-1
+    ps-[18px]
+  }
+
+  .markdown-content code {
+    @apply inline-block
+    text-bodyMedium
+    text-light-onSurfaceVariant
+    dark:text-dark-onSurfaceVariant
+    bg-light-surfaceContainerHigh
+    dark:bg-dark-surfaceContainerHigh
+    py-[1px]
+    px-1.5;
+  }
+
+  .markdown-content strong code {
+    @apply text-light-onSurface
+    dark:text-dark-onSurface
+    font-semibold;
+  }
+
+  .markdown-content pre code {
+    @apply block
+    py-2
+    px-3
+    overflow-x-auto
+  }
+
+  .markdown-content table {
+    @apply bg-light-surfaceContainer
+    dark:bg-dark-surfaceContainer
+    block
+    max-w-max
+    overflow-auto
+    rounded-large;
+  }
+
+  .markdown-content table th {
+    @apply text-titleMedium
+    p-4
+    whitespace-nowrap
+    text-left;
+  }
 }
 
 @layer utilities {
