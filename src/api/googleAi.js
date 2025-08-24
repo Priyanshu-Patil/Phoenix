@@ -1,7 +1,22 @@
 import { GoogleGenAI } from '@google/genai';
 const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY });
 
-const getConversationTitle = async (userPrompt) => {
+const getConversationTitle = async (userPrompt, chats = []) => {
+  const history = [];
+  chats.forEach(({ user_prompt, ai_response}) => {
+    history.push(
+      {
+        role: 'user',
+        parts: [{text: user_prompt}],
+      },
+      {
+        role: 'model',
+        parts: [{ text: ai_response}],
+      },
+    );
+    console.log(history)
+  });
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
@@ -18,11 +33,28 @@ const getConversationTitle = async (userPrompt) => {
 
 const getAiResponse = async(userPrompt, chats = []) => {
   try {
-    const historyText = chats.map((c, i) => `User: ${c.user}\nAI: ${c.ai}`).join('\n');
-    const prompt = historyText ? `${historyText}\nUser: ${userPrompt}` : userPrompt;
+    // Format history for Gemini 2.5 Flash
+    const history = [];
+    chats.forEach(({ user_prompt, ai_response }) => {
+      history.push(
+        {
+          role: 'user',
+          parts: [{ text: user_prompt }],
+        },
+        {
+          role: 'model',
+          parts: [{ text: ai_response }],
+        }
+      );
+    });
+    // Add latest user prompt
+    history.push({
+      role: 'user',
+      parts: [{ text: userPrompt }],
+    });
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
-      contents: prompt,
+      contents: history,
       generationConfig: { temperature: 1.5 }
     });
     return response.text;

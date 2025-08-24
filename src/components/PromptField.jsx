@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { IconBtn } from './Button';
 import { useCallback, useRef, useState } from 'react';
-import { useNavigation, useSubmit } from 'react-router-dom';
+import { useNavigation, useSubmit, useParams } from 'react-router-dom';
 
 const PromptField = () => {
   const inputField = useRef();
@@ -11,6 +11,7 @@ const PromptField = () => {
   const [placeholderShown, setplaceholderShown] = useState(true);
   const [isMultiline, setIsMultiline] = useState(false);
   const [inputValue, setinputValue] = useState('');
+  const { conversationId } = useParams();
 
   const handleInputChange = useCallback(() => {
     if (inputField.current.innerText === '\n') {
@@ -54,13 +55,13 @@ const PromptField = () => {
       {
         method: 'POST',
         encType: 'application/x-www-form-urlencoded',
-        action: '/',
+        action: `/${conversationId || ''}`,
       },
     );
 
     inputField.current.innerHTML = '';
     handleInputChange();
-  }, [handleInputChange, inputValue, navigation.state, submit]);
+  }, [handleInputChange, inputValue, navigation.state, submit, conversationId]);
 
   const promptFieldVariant = {
     hidden: { scaleX: 0 },

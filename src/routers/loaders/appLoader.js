@@ -21,7 +21,6 @@ const appLoader = async () => {
                 Query.equal('user_id', data.user.$id),
             ],
         )
-        console.log(data)
     } catch (error) {
         console.log(`Error Getting Conversation ${error.message}`);
     }
