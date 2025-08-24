@@ -1,47 +1,93 @@
 import PropTypes from 'prop-types';
+import { useState, useEffect, useCallback } from 'react';
 import { iconLogo } from '../assets/assets';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { hopscotch, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { IconBtn } from './Button';
+import toTitleCase from '../utils/toTitleCase';
+import { useSnackbar } from '../hooks/useSnackbar';
 
 const AiResponse = ({ aiResponse, children }) => {
+  const [codeTheme, setCodeTheme] = useState('');
+
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    setCodeTheme(mediaQuery.matches ? hopscotch : coy);
+    const themeListner = mediaQuery.addEventListener('change', (event) => {
+      setCodeTheme(event.matches ? hopscotch : coy);
+    });
+
+    return () => mediaQuery.removeEventListener('change', themeListner);
+  }, []);
+
+  const handleCopy = useCallback(
+    async (text) => {
+      try {
+        hideSnackbar();
+        await navigator.clipboard.writeText(text);
+        showSnackbar({ message: 'Copied to clipboard', timeOut: 2500 });
+      } catch (error) {
+        showSnackbar({message: error.message})
+        console.log(`Error copying text: ${error.message}`);
+      }
+    },
+    [showSnackbar, hideSnackbar],
+  );
+
   const code = ({ children, className, ...rest }) => {
     const match = className?.match(/language-(\w+)/);
 
     return match ? (
       <>
         <div className='code-block'>
-          <div className='p-4 pb-0 font-sans'>{match[0]}</div>
+          <div className='p-4 pb-0 font-sans'>{toTitleCase(match[1])}</div>
 
           <SyntaxHighlighter
             {...rest}
             PreTag='div'
             language={match[1]}
-            style={hopscotch}
+            style={codeTheme}
             customStyle={{
-                marginBlock: '0',
-                padding: '2px'
+              marginBlock: '0',
+              padding: '2px',
             }}
             codeTagProps={{
-                style: {
-                    padding: '14px',
-                    fontWeight: '600',
-                }
+              style: {
+                padding: '14px',
+                fontWeight: '600',
+              },
             }}
           >
             {children}
           </SyntaxHighlighter>
         </div>
 
-        <div className="">
-            <p>
-                Use code
-                <a href="http://gemini.google.com/faq#coding" className='link ms-2' target='blank'>with caution.</a>
-            </p>
+        <div
+          className='bg-light-surfaceContainer dark:bg-dark-surfaceContainer rounded-t-extraSmall rounded-b-medium flex justify-between items-center
+        h-11 font-sans text-bodyMedium ps-4 pe-2'
+        >
+          <p>
+            Use code
+            <a
+              href='http://gemini.google.com/faq#coding'
+              className='link ms-2'
+              target='blank'
+            >
+              with caution.
+            </a>
+          </p>
 
-            <IconBtn icon='content_copy' size='small' title='Copy Code' />
+          <IconBtn
+            icon='content_copy'
+            size='small'
+            title='Copy Code'
+            onClick={handleCopy.bind(null, children)}
+          />
         </div>
       </>
     ) : (

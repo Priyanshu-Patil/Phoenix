@@ -663,6 +663,10 @@
     mb-0.5
     overflow-hidden;
   }
+
+  .markdown-content .code-block * {
+    @apply !bg-inherit;
+  }
 }
 
 @layer utilities {

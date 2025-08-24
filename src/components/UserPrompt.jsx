@@ -18,7 +18,7 @@ const UserPrompt = ({ text }) => {
   }, [textRefBox]);
 
   return (
-    <div className='grid grid-cols-1 items-center gap-1 py-4 md:grid-cols-[max-content,minmax(0,1fr),max-content] md:gap-5'>
+    <div className='grid grid-cols-1 items-start gap-1 py-4 md:grid-cols-[max-content,minmax(0,1fr),max-content] md:gap-5'>
       <Avatar name={user?.name} />
 
       <p
