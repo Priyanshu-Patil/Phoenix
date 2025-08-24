@@ -1,6 +1,6 @@
 import { easeOut, motion } from 'motion/react';
 import PageTitle from '../components/Pagetitle';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation } from 'react-router-dom';
 import UserPrompt from '../components/UserPrompt';
 import AiResponse from '../components/AiResponse';
 import PromptPreloader from '../components/PromptPreloader';
@@ -11,13 +11,14 @@ const Conversation = () => {
   const {
     conversation: { title, chats },
   } = useLoaderData() || {};
+  const location = useLocation();
 
   return (
     <>
       <PageTitle title={`${title} | Phoenix`} />
       <motion.div
         className='max-w-[700px] mx-auto !will-change-auto'
-        initial={{ opacity: 0 }}
+        initial={!location.state?._isRedirect && { opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, delay: 0.05, ease: easeOut }}
       >
