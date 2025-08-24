@@ -5,11 +5,13 @@ import { useToggle } from './hooks/useToggle';
 import Greeting from './pages/Greeting';
 import { motion } from 'motion/react';
 import PromptField from './components/PromptField';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useNavigation } from 'react-router-dom';
 
 const App = () => {
   const [isSidebarOpen, toggleSidebar] = useToggle();
+  const navigation = useNavigation();
   const params = useParams();
+  const isNormalLoad = navigation.state === 'loading' && !navigation.formData;
   return (
     <>
       <PageTitle title='Phoenix - chat to supercharge your ideas.' />
@@ -27,7 +29,7 @@ const App = () => {
           {/* MainContent */}
           <div className='px-5 pb-5 flex flex-col overflow-y-auto'>
             <div className='max-w-[840px] w-full mx-auto grow'>
-              {params.conversationId ? (
+              {isNormalLoad ? null : params.conversationId ? (
                 <Outlet />
               ) : (
                 <Greeting />
