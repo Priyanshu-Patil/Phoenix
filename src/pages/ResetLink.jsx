@@ -26,7 +26,7 @@ const ResetLink = () => {
 
   return (
     <>
-      <PageTitle title='Reset Passward' />
+      <PageTitle title='Reset Password' />
 
       <div className='relative w-screen h-dvh p-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] lg:gap-2'>
         <div className='flex flex-col p-4'>
@@ -45,7 +45,7 @@ const ResetLink = () => {
             <Form
               method='POST'
               className='grid grid-cols-1 gap-4'
-              action='/register'
+              action='/reset-link'
             >
               <TextField
                 type='email'
@@ -66,7 +66,7 @@ const ResetLink = () => {
                     <span>Submitting...</span>
                   </div>
                 ) : (
-                  'Sign In'
+                  'Send Reset Link'
                 )}
               </Button>
             </Form>

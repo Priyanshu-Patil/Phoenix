@@ -44,7 +44,7 @@ const ResetPassword = () => {
             <Form
               method='POST'
               className='grid grid-cols-1 gap-4'
-              action='/register'
+              action='/reset-password'
             >
               <TextField
                 type='password'
@@ -64,7 +64,7 @@ const ResetPassword = () => {
                     <span>Submitting...</span>
                   </div>
                 ) : (
-                  'Sign In'
+                  'Reset Password'
                 )}
               </Button>
             </Form>
