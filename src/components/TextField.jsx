@@ -5,28 +5,28 @@ const TextField = ({
   helperText,
   label,
   name,
-  placeholder = '',
+  placeholder = ' ',
   fieldclasses = '',
   ...rest
 }) => {
   return (
     <div className={`text-field-wrapper ${classes}`}>
-      <label
-        htmlFor={name}
-        className='label-text'
-      >
-        {label}
-      </label>
-
       <input
         className={`text-field ${fieldclasses}`}
         id={name}
         name={name}
-        placeholder={placeholder}
+        placeholder={placeholder} // floating label ke liye ek space
         {...rest}
       />
 
-      {helperText && <p className='helper-text'>{helperText}</p>}
+      <label
+        htmlFor={name}
+        className="label-text"
+      >
+        {label}
+      </label>
+
+      {helperText && <p className="helper-text">{helperText}</p>}
     </div>
   );
 };

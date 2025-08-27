@@ -29,7 +29,6 @@ const Login = () => {
 
       <div className='relative w-screen h-dvh p-2 grid grid-cols-1 lg:grid-cols-[1fr,1.2fr] lg:gap-2'>
         <div className='flex flex-col p-4'>
-          
           <Logo classes='mb-auto mx-auto lg:mx-0' />
 
           <div className='flex flex-col gap-2 max-w-[480px] w-full mx-auto'>
@@ -50,7 +49,6 @@ const Login = () => {
                 type='email'
                 name='email'
                 label='Email'
-                placeholder='Email'
                 required={true}
                 autofocus={true}
               />
@@ -59,7 +57,6 @@ const Login = () => {
                 type='password'
                 name='password'
                 label='Password'
-                placeholder='Enter your password'
                 required={true}
               />
 
@@ -76,9 +73,14 @@ const Login = () => {
                 type='submit'
                 disabled={navigation.state === 'submitting'}
               >
-                {navigation.state === <CircularProgress size='small' />
-                  ? 'Submitting...'
-                  : 'Sign In'}
+                {navigation.state === 'submitting' ? (
+                  <div className='flex items-center gap-2'>
+                    <CircularProgress size='small' />
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </Button>
             </Form>
 

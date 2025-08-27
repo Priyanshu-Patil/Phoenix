@@ -50,7 +50,6 @@ const Register = () => {
                 type='text'
                 name='name'
                 label='Full name'
-                placeholder='Full Name'
                 required={true}
                 autoFocus={true}
               />
@@ -59,7 +58,6 @@ const Register = () => {
                 type='email'
                 name='email'
                 label='Email'
-                placeholder='Email'
                 required={true}
               />
 
@@ -67,7 +65,6 @@ const Register = () => {
                 type='password'
                 name='password'
                 label='Password'
-                placeholder='Enter your password'
                 required={true}
               />
 
@@ -75,9 +72,14 @@ const Register = () => {
                 type='submit'
                 disabled={navigation.state === 'submitting'}
               >
-                {navigation.state === <CircularProgress size='small' />
-                  ? 'Submitting...'
-                  : 'Create account'}
+                {navigation.state === 'submitting' ? (
+                  <div className='flex items-center gap-2'>
+                    <CircularProgress size='small' />
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </Button>
             </Form>
 

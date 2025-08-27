@@ -51,7 +51,6 @@ const ResetLink = () => {
                 type='email'
                 name='email'
                 label='Email'
-                placeholder='Email'
                 helperText='The verification sent on your email will be valid for 1 hour.'
                 required={true}
                 autofocus={true}
@@ -61,9 +60,14 @@ const ResetLink = () => {
                 type='submit'
                 disabled={navigation.state === 'submitting'}
               >
-                {navigation.state === <CircularProgress size='small' />
-                  ? 'Submitting...'
-                  : 'Send Reset Link'}
+                {navigation.state === 'submitting' ? (
+                  <div className='flex items-center gap-2'>
+                    <CircularProgress size='small' />
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </Button>
             </Form>
           </div>

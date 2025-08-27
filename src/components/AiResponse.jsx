@@ -32,7 +32,7 @@ const AiResponse = ({ aiResponse, children }) => {
         await navigator.clipboard.writeText(text);
         showSnackbar({ message: 'Copied to clipboard', timeOut: 2500 });
       } catch (error) {
-        showSnackbar({message: error.message})
+        showSnackbar({ message: error.message });
         console.log(`Error copying text: ${error.message}`);
       }
     },
@@ -106,14 +106,16 @@ const AiResponse = ({ aiResponse, children }) => {
         />
       </figure>
       {children}
-      <div className='markdown-content'>
-        <Markdown
-          remarkPlugins={[remarkGfm]}
-          components={{ code }}
-        >
-          {aiResponse}
-        </Markdown>
-      </div>
+      {aiResponse && (
+        <div className='markdown-content'>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{ code }}
+          >
+            {aiResponse}
+          </Markdown>
+        </div>
+      )}
     </div>
   );
 };

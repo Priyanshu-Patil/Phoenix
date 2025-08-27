@@ -50,7 +50,6 @@ const ResetPassword = () => {
                 type='password'
                 name='password'
                 label='Password'
-                placeholder='Enter new password'
                 required={true}
                 autofocus={true}
               />
@@ -59,9 +58,14 @@ const ResetPassword = () => {
                 type='submit'
                 disabled={navigation.state === 'submitting'}
               >
-                {navigation.state === <CircularProgress size='small' />
-                  ? 'Submitting...'
-                  : 'Reset Password'}
+                {navigation.state === 'submitting' ? (
+                  <div className='flex items-center gap-2'>
+                    <CircularProgress size='small' />
+                    <span>Submitting...</span>
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </Button>
             </Form>
           </div>

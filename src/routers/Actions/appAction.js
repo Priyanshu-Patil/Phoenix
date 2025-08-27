@@ -33,20 +33,37 @@ const userPromptAction = async ({ formData }) => {
 
   try {
     await databases.createDocument(
-        import.meta.env.VITE_APPWRITE_DATABASE_ID,
-        'chats',
-        generateID(),
-        {
-            user_prompt: userPrompt,
-            ai_response: aiResponse,
-            conversation: conversation.$id,
-        }
-    )
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      'chats',
+      generateID(),
+      {
+        user_prompt: userPrompt,
+        ai_response: aiResponse,
+        conversation: conversation.$id,
+      },
+    );
   } catch (error) {
     console.log(`Error creating chat ${error.message}`);
   }
 
   return redirect(`/${conversation.$id}`);
+};
+
+const conversationAction = async ({formData}) => {
+  const conversationId = formData.get('conversation_id');
+  const conversationTitle = formData.get('conversation_title');
+
+  try {
+    await databases.deleteDocument(
+      import.meta.env.VITE_APPWRITE_DATABASE_ID,
+      '68a8570b001e58506631',
+      conversationId,
+    );
+
+    return { conversationTitle };
+  } catch (error) {
+    console.log(`Error deleting coversation ${error.message}`);
+  }
 };
 
 const appAction = async ({ request }) => {
@@ -55,6 +72,10 @@ const appAction = async ({ request }) => {
 
   if (requestType === 'user_prompt') {
     return await userPromptAction({ formData });
+  }
+
+  if (requestType === 'delete_conversation') {
+    return await conversationAction({ formData });
   }
 };
 
