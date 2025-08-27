@@ -43,7 +43,7 @@ const Login = () => {
             <Form
               method='POST'
               className='grid grid-cols-1 gap-4'
-              action='/register'
+              action='/login'
             >
               <TextField
                 type='email'
