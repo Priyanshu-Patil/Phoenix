@@ -1,4 +1,4 @@
-import PageTitle from './components/Pagetitle';
+import PageTitle from './components/PageTitle';
 import TopAppBar from './components/TopAppBar';
 import Sidebar from './components/Sidebar';
 import { useToggle } from './hooks/useToggle';
