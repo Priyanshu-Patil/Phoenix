@@ -1,12 +1,69 @@
-# React + Vite
+# Phoenix: AI-Powered React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Phoenix is a modern web application built with React and Vite, designed to deliver fast, interactive user experiences powered by Google AI. It features user authentication, chat conversations, and a sleek UI with Material-inspired components.
 
-Currently, two official plugins are available:
+## What It Does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Enables users to interact with AI-powered responses.
+- Supports user registration, login, and password reset.
+- Provides real-time chat conversations with error handling.
+- Displays dynamic UI elements like progress bars, snackbars, and skeleton loaders.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Vite
+- **Styling:** Tailwind CSS
+- **State Management:** React Context, Custom Hooks
+- **AI Integration:** Google AI API
+- **Other Libraries:** Appwrite (for backend services), ESLint, Prettier
+
+<!-- ## Key Packages Used
+
+- `react`
+- `vite`
+- `@vitejs/plugin-react`
+- `tailwindcss`
+- `eslint`
+- `prettier`
+- `appwrite`
+- `@babel/core`
+- `@vitejs/plugin-react-swc` -->
+
+## Installation guide
+
+1. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+2. **Start the development server:**
+    ```bash
+    npm run dev
+    ```
+3. **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## Features
+
+- AI-powered chat and responses
+- User authentication (register, login, reset password)
+- Responsive design with custom components
+- Context-based snackbar notifications
+- Progress indicators and skeleton loaders
+- Modular code structure for scalability
+
+## Contribution
+
+Contributions are welcome! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes with clear messages.
+4. Submit a pull request describing your changes.
+
+Please follow the existing code style and ensure your changes pass linting and tests.
+
+---
+
+Feel free to explore the codebase and suggest improvements!
