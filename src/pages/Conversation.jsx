@@ -1,5 +1,5 @@
 import { easeOut, motion } from 'motion/react';
-import PageTitle from '../components/Pagetitle';
+import PageTitle from '../components/PageTitle';
 import { useLoaderData, useLocation } from 'react-router-dom';
 import UserPrompt from '../components/UserPrompt';
 import AiResponse from '../components/AiResponse';

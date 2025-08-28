@@ -1,4 +1,4 @@
-import PageTitle from '../components/Pagetitle';
+import PageTitle from '../components/PageTitle';
 import { Link, Form, useNavigation, useActionData } from 'react-router-dom';
 import { banner } from '../assets/assets';
 import TextField from '../components/TextField';
