@@ -1,20 +1,6 @@
 import PropTypes from 'prop-types';
 import { motion } from 'motion/react';
 
-const CircularProgress = ({ classes = '', size = '' }) => {
-  return (
-    <div
-      role='progressbar'
-      className={`circular-progress ${size} ${classes}`}
-    ></div>
-  );
-};
-
-CircularProgress.propTypes = {
-  classes: PropTypes.string,
-  size: PropTypes.string,
-};
-
 const LinearProgress = ({ classes = '' }) => {
   const progressVariants = {
     start: { scaleY: 0 },
@@ -34,14 +20,14 @@ const LinearProgress = ({ classes = '' }) => {
   };
 
   const activeIndicatorVariants = {
-    start: {translateX: '-100%' },
+    start: { translateX: '-100%' },
     end: {
       translateX: '0%',
       transition: {
         duration: 0.3,
         ease: [0.05, 0.7, 0.1, 1],
         delay: 0.5,
-        },
+      },
     },
   };
 
@@ -57,9 +43,9 @@ const LinearProgress = ({ classes = '' }) => {
       <motion.div
         variants={activeIndicatorVariants}
         transition={{
-            repeat: Infinity,
-            duration: 1.5,
-            ease: [0.05, 0.7, 0.1, 1],
+          repeat: Infinity,
+          duration: 1.5,
+          ease: [0.05, 0.7, 0.1, 1],
         }}
         className='active-indicator'
       ></motion.div>
@@ -71,4 +57,4 @@ LinearProgress.propTypes = {
   classes: PropTypes.string,
 };
 
-export { CircularProgress, LinearProgress };
+export default LinearProgress;

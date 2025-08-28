@@ -9,7 +9,7 @@ import {
 import Avatar from './Avatar';
 import Menu from './Menu';
 import MenuItem from './MenuItem';
-import { LinearProgress } from './Progress';
+import LinearProgress from '../components/LinearProgress';
 import { AnimatePresence } from 'motion/react';
 import { useToggle } from '../hooks/useToggle';
 import logout from '../utils/logout';

@@ -1,5 +1,5 @@
 import { useRouteError, Link, useNavigation } from 'react-router-dom';
-import { LinearProgress } from '../components/Progress';
+import LinearProgress from '../components/LinearProgress';
 
 const RootError = () => {
   const error = useRouteError();

@@ -3,7 +3,8 @@ import { Form, useNavigation, useActionData } from 'react-router-dom';
 import { banner } from '../assets/assets';
 import TextField from '../components/TextField';
 import { Button } from '../components/Button';
-import { CircularProgress, LinearProgress } from '../components/Progress';
+import CircularProgress from '../components/CircularProgress';
+import LinearProgress from '../components/LinearProgress';
 import { useEffect } from 'react';
 import { useSnackbar } from '../hooks/useSnackbar';
 import { AnimatePresence } from 'motion/react';
@@ -53,7 +54,7 @@ const ResetLink = () => {
                 label='Email'
                 helperText='The verification sent on your email will be valid for 1 hour.'
                 required={true}
-                autofocus={true}
+                autoFocus={true}
               />
 
               <Button
