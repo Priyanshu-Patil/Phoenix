@@ -18,7 +18,7 @@ const Logo = ({ classes = ''}) => {
       <img
         src={logoDark}
         alt='phoenix logo'
-        className=''
+        className='hidden dark:block'
         width={133}
         height={24}
       />
